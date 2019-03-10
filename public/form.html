@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <header>
-    <% include ../partials/header.ejs %>
+    <title>Postal Calculator - Form</title>
 </header>
 <body>
-    <head>
-        <% include ../partials/head.ejs %>
-    </head>
-    <div class="container py-3 bg-info text-center">
     <form action="/calculateRate" method="get">
         <label for="weight">weight (oz)</label>
         <input type="text" name="weight">
@@ -23,6 +19,5 @@
         <button type="submit">Submit</button>
         <button type="reset">Clear</buttont>
     </form>
-    </div>
 </body>
 </html>
