@@ -17,17 +17,17 @@ function calculateRate(req, res) {
   var type = req.query.type;
 
   if (type == "stamped") {
-    getStampedPrice(res, weight);
+    getStampedPrice(res, weight, type);
   } else if (type == "metered") {
-    getMeteredPrice(res, weight);
+    getMeteredPrice(res, weight, type);
   } else if (type == "flat") {
-    getFlatPrice(res, weight);
+    getFlatPrice(res, weight, type);
   } else if (type == "retail") {
-    getRetailPrice(res, weight);
+    getRetailPrice(res, weight, type);
   }
 }
 
-function getStampedPrice(res, weight) {
+function getStampedPrice(res, weight, type) {
   var price;
   if (weight <= 1) {
     price = .55;
@@ -41,11 +41,11 @@ function getStampedPrice(res, weight) {
   else {
     price = 1.00;
   }
-  const params = {price: price};
+  const params = {price: price, weight: weight, type: type};
   res.render('pages/results', params);
 }
 
-function getFlatPrice(res, weight) {
+function getFlatPrice(res, weight, type) {
   var price;
   if (weight <= 1) {
     price = 1.00;
@@ -87,11 +87,11 @@ function getFlatPrice(res, weight) {
     price = 2.80;
   }
 
-  const params = {price: price};
+  const params = {price: price, weight: weight, type: type};
   res.render('pages/results', params);
 }
 
-function getMeteredPrice(res, weight) {
+function getMeteredPrice(res, weight, type) {
   var price;
   if (weight <= 1) {
     price = .50;
@@ -106,11 +106,11 @@ function getMeteredPrice(res, weight) {
     price = .75;
   }
 
-  const params = {price: price};
+  const params = {price: price, weight: weight, type: type};
   res.render('pages/results', params);
 }
 
-function getRetailPrice(res, weight) {
+function getRetailPrice(res, weight, type) {
   var price;
   if (weight <= 4) {
     price = 3.66;
@@ -125,6 +125,6 @@ function getRetailPrice(res, weight) {
     price = 5.71;
   }
 
-  const params = {price: price};
+  const params = {price: price, weight: weight, type: type};
   res.render('pages/results', params);
 }
